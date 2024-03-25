@@ -1,0 +1,2 @@
+Autenticate: testa a conexão
+sincronizado: a estrutura das tabelas esta de acordo com o modelo
