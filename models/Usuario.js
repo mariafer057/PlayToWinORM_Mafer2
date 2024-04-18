@@ -1,15 +1,15 @@
-const conn = require("../db/conn");
-const {DataTypes} = require ("sequelize");
+const { DataTypes } = require('sequelize');
+const conn = require('../db/conn');
 
 const Usuario = conn.define("Usuario", {
     nickname: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     nome: {
         type: DataTypes.STRING,
-        require: true,
+        allowNull: false,
     },
 });
 
-module.esports = Usuario;
+module.exports = Usuario;
