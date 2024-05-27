@@ -1,13 +1,24 @@
-
-    <form action="/usuarios/novo" method="post">
-      <div>
-        <label for="nickname">Nickname:</label>
-        <input type="text" id="nickname" name="nickname" />
-      </div>
+<!-- Definindo se é um form de att, ou de cadastro -->
+{{#if usuario}} 
+  <h1>Atualizar user</h1>
+  <form action="/usuarios/{{usuario.id}}/update" method="post">
+{{else}}
+  <h1>Cadastrar users</h1>
+  <form action="/usuarios/novo" method="post">
+{{/if}}
+   <div>
+      <label for="nickname">Nickname:</label>
+      <input type="text" id="nickname" name="nickname" value="{{usuario.nickname}}"/>
+    </div>
       <div>
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" />
+        <input type="text" id="nome" name="nome" value="{{usuario.nome}}" />
       </div>
-      <input type="submit" value="Cadastrar" />
+
+      {{#if usuario}}
+      <input type="text" value="Salvar">
+      {{else}}
+            <input type="submit" value="Enviar">
+{{/if}}
     </form>
   

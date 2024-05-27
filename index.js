@@ -46,6 +46,20 @@ app.post("/usuarios/novo", async (req, res) => {
     }
 });
 
+app.get("/usuarios/:id/update", async (req,res)=>{
+const id = parseInt(req.params.id);
+const usuario = await Usuario.findByPk(id, {raw: true});
+
+res.render("formUsuario", { usuario })
+//const usuario = Usuario.findOne({
+    //where: {id: id},
+    //raw: true,
+});
+
+
+
+
+
 app.listen(8000, () => {
     console.log("Servidor está ouvindo na porta 8000");
 });
