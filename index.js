@@ -56,6 +56,21 @@ res.render("formUsuario", { usuario })
     //raw: true,
 });
 
+
+//excluir jogo
+app.post("/usuarios/:id/delete", async (req,res)=>{
+    const id = parseInt(req.params.id);
+    const retorno = await Usuario.destroy({where: {id: id}});
+    
+    if(retorno> 0){
+        res.redirect("/usuarios")
+    }else{
+        res.send("Erro ao deletar user :(")
+    }
+    });
+
+
+
 app.post("/usuarios/:id/update", async (req, res)=> {
     const id = parseInt(req.params.id)
     const dadosUsuario = {
