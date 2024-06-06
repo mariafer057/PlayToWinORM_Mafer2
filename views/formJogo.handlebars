@@ -1,9 +1,9 @@
 <!-- Definindo se é um form de att, ou de cadastro -->
-{{#if usuario}} 
-  <h1>Atualizar user</h1>
-  <form action="/jogos/{{usuario.id}}/update" method="post">
+{{#if jogo}} 
+  <h1>Atualizar Games</h1>
+  <form action="/jogos/{{jogo.id}}/update" method="post">
 {{else}}
-  <h1>Cadastrar users</h1>
+  <h1>Cadastrar Games</h1>
   <form action="/jogos/novo" method="post">
 {{/if}}
    <div>
@@ -15,11 +15,11 @@
         <input type="text" id="descricao" name="descricao" value="{{jogo.descricao}}" />
       </div>
       <div>
-        <label for="preco">Descrição:</label>
+        <label for="preco">Preço:</label>
         <input type="double" id="preco" name="preco" value="{{jogo.preco}}" />
       </div>
 
-      {{#if usuario}}
+      {{#if jogo}}
       <input type="submit" value="Salvar">
       {{else}}
             <input type="submit" value="Enviar">
