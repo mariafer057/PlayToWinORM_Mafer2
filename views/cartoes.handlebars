@@ -1,17 +1,22 @@
-<h2>Users cadastrados</h2>
+<h2>Cartões cadastrados</h2>
 
 
-<a href="/usuarios/novo">Casdastre-se AQUI!</a>
+<a href="/usuarios/{{usuario.id}}/novoCartao">Cadastrar Cartão</a>
+
+
+
+
+
+
 <table border="1">
     <tr> <!-- table row -->
-        <th>Id</th>
-        <th>Nickname</th>
         <th>Nome</th>
+        <th>Código de Segurança</th>
+        <th>Numro</th>
     </tr>
-    {{#each usuarios}}
+    {{#each cartoes}}
     <tr>
-        <td>{{this.id}}</td>
-        <td>{{this.nickname}}</td>
+        <td>{{this.numero}}</td>
         <td>{{this.nome}}</td>
         <td>
             <a href="/usuarios/{{this.id}}/update">Atualizar</a>

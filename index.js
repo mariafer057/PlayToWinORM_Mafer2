@@ -1,7 +1,10 @@
 require("dotenv").config();
 const conn = require("./db/conn");
-const Usuario = require("./models/Usuario");
 const express = require("express");
+
+const Usuario = require("./models/Usuario");
+const Cartao = require("./models/Cartao");
+const Jogo = require("./models/Jogo");
 
 
 const exphbs = require ("express-handlebars");
@@ -154,6 +157,39 @@ app.get("/jogos/:id/update", async (req, res)=>{
         }
     });
     
+//ROTAS PARA CARTÕES
+
+//VER CARTÕES
+app.get("/usuarios/:id/cartoes", async (req, res)=>{
+    const id = parseInt(req.params.id);
+    const usuario = await Usuario.findByPk(id, {raw: true});
+
+    res.render("cartoes.handlebars", { usuario });
+    });
+
+    //FORMULARIO DE CARTÕES
+    app.get("/usuarios/:id/novoCartao", async (req, res)=>{
+        const id = parseInt(req.params.id);
+        const usuario = await Usuario.findByPk(id, {raw: true});
+    
+        res.render("formCartao", {usuario})
+    }
+    )
+
+    //CADASTRO DE CARTAO 
+    app.post("/usuarios/:id/novoCartao", async (req, res)=>{
+        const dadosCartao = {
+            numero: req.body.numero,
+            nome: req.body.nome,
+            codigoSeguranca: req.body.codigoSeguranca,
+            usuarioId: id,
+        };
+
+       await Cartao.create(dadosCartao)
+
+       res.redirect(`/usuarios/${id}/cartoes`);
+    });
+
 
 app.listen(8000, () => {
     console.log("Servidor está ouvindo na porta 8000");
