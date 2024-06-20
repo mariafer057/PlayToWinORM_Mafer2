@@ -1,31 +1,18 @@
-<h2>Cartões cadastrados</h2>
+<h1>Cartões Cadastrados</h1>
 
-
-<a href="/usuarios/{{usuario.id}}/novoCartao">Cadastrar Cartão</a>
-
-
-
-
-
+<a href="/usuarios/{{usuario.id}}/novoCartao">Cadastrar cartão</a>
 
 <table border="1">
-    <tr> <!-- table row -->
-        <th>Nome</th>
-        <th>Código de Segurança</th>
-        <th>Numro</th>
-    </tr>
-    {{#each cartoes}}
+  <!-- table row -->
+  <tr>
+    <!-- table head -->
+    <th>Número</th>
+    <th>Nome</th>
+  </tr>
+  {{#each cartoes}}
     <tr>
-        <td>{{this.numero}}</td>
-        <td>{{this.nome}}</td>
-        <td>
-            <a href="/usuarios/{{this.id}}/update">Atualizar</a>
-            <form action="/usuarios/{{this.id}}/delete" method="post">
-            <input type="submit" value="Excluir"/>
-            </form>
-            <a href="/usuarios/{{this.id}}"/>
-        </td>
-        
+      <td>{{this.numero}}</td>
+      <td>{{this.nome}}</td>
     </tr>
-    {{/each}}
+  {{/each}}
 </table>

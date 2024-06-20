@@ -1,25 +1,29 @@
-const db = require("../db/conn")
-const { DataTypes } = require('sequelize');
+const db = require("../db/conn");
+const { DataTypes } = require("sequelize");
 const Usuario = require("../models/Usuario");
 
-const Cartao = db.define("Cartão",{
+const Cartao = db.define(
+  "Cartao",
+  {
     numero: {
-        type: DataTypes.STRING(16),
-        allowNull: false,
+      type: DataTypes.STRING(16),
+      allowNull: false,
     },
     nome: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    codigoSeguranca: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+    codSeguranca: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-},
-    {
+  },
+  {
     tableName: "Cartoes",
-    }
+  }
 );
+
 Cartao.belongsTo(Usuario);
 Usuario.hasMany(Cartao);
+
 module.exports = Cartao;
