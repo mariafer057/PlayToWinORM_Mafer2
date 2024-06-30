@@ -5,22 +5,17 @@ const Jogo = require("../models/Jogo");
 const Conquista = db.define(
   "Conquista",
   {
-    numero: {
+    nome: {
       type: DataTypes.STRING(16),
       allowNull: false,
     },
-    nome: {
+    descricao: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    codSeguranca: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+
   },
-  {
-    tableName: "Conquista",
-  }
+  
 );
 
 Conquista.belongsTo(Jogo);
