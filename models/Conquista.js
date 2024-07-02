@@ -6,7 +6,7 @@ const Conquista = db.define(
   "Conquista",
   {
     nome: {
-      type: DataTypes.STRING(16),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     descricao: {
